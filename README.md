@@ -2,6 +2,8 @@
 
 This is a port of [Prover9-Mace4 GUI v05](https://www.cs.unm.edu/~mccune/prover9/gui/v05.html) to Python 3+ and WX widget library 4+.
 
+![GUI](https://www.cs.unm.edu/~mccune/prover9/gui/shot1-v05.jpg)
+
 Tested only on Linux.
 
 Let-me know if you liked this work or if you want to help: thiagogv@gmail.com
