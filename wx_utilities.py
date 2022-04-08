@@ -238,7 +238,7 @@ class Mini_info(wx.MiniFrame):
             self.Bind(wx.EVT_BUTTON, self.on_close, close_btn)
         self.Bind(wx.EVT_CLOSE, self.on_close)
 
-        gsizer = wx.GridSizer(len(items), 2)
+        gsizer = wx.GridSizer(len(items), 2, 2)
 
         self.val_labels = []
         for (name,val) in items:
@@ -316,7 +316,7 @@ class Busy_bar(wx.Gauge):
 
     def start(self):
         self.timer = wx.Timer(self, -1)
-        wx.EVT_TIMER(self, self.timer.GetId(), self.update_bar)
+        self.Bind(wx.EVT_TIMER, self.update_bar, self.timer)
         self.timer.Start(self.delay)
         self.state = State.running
 

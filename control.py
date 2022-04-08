@@ -34,12 +34,17 @@ from options import *
 def run_and_wait(command, input = '', fin = None):
 
     if not fin:
-        fin  = tempfile.TemporaryFile('w+b')  # stdin
+#        fin  = tempfile.TemporaryFile('w+b')  # stdin
+        fin  = tempfile.TemporaryFile('w+')  # stdin
         fin.write(input)
         fin.seek(0)
 
-    fout = tempfile.TemporaryFile('w+b')  # stdout
-    ferr = tempfile.TemporaryFile('w+b')  # stderr
+#    fout = tempfile.TemporaryFile('w+b')  # stdout
+#    ferr = tempfile.TemporaryFile('w+b')  # stderr
+
+    fout = tempfile.TemporaryFile('w+')  # stdout
+    ferr = tempfile.TemporaryFile('w+')  # stderr
+
 
     if Win32():
         # creationflag says not to pop a DOS box
@@ -455,9 +460,13 @@ class Run_program:
             self.fin  = self.fout = self.ferr = None
         else:
             # use files to avoid buffering problems  (maybe improve later)
-            self.fin  = tempfile.TemporaryFile('w+b')  # stdin
-            self.fout = tempfile.TemporaryFile('w+b')  # stdout
-            self.ferr = tempfile.TemporaryFile('w+b')  # stderr
+#            self.fin  = tempfile.TemporaryFile('w+b')  # stdin
+#            self.fout = tempfile.TemporaryFile('w+b')  # stdout
+#            self.ferr = tempfile.TemporaryFile('w+b')  # stderr
+
+            self.fin  = tempfile.TemporaryFile('w+')  # stdin
+            self.fout = tempfile.TemporaryFile('w+')  # stdout
+            self.ferr = tempfile.TemporaryFile('w+')  # stderr
 
             self.fin.write(self.input)
             self.fin.seek(0)
@@ -1019,9 +1028,13 @@ class Isofilter_frame(wx.Frame):
         # RUNS IN A SEPARATE THREAD!!!
         #
 
-        self.fin  = tempfile.TemporaryFile('w+b')  # stdin
-        self.fout = tempfile.TemporaryFile('w+b')  # stdout
-        self.ferr = tempfile.TemporaryFile('w+b')  # stderr
+#        self.fin  = tempfile.TemporaryFile('w+b')  # stdin
+#        self.fout = tempfile.TemporaryFile('w+b')  # stdout
+#        self.ferr = tempfile.TemporaryFile('w+b')  # stderr
+        self.fin  = tempfile.TemporaryFile('w+')  # stdin
+        self.fout = tempfile.TemporaryFile('w+')  # stdout
+        self.ferr = tempfile.TemporaryFile('w+')  # stderr
+
 
         self.fin.write(self.models)
         self.fin.seek(0)

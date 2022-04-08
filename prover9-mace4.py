@@ -35,9 +35,9 @@ from wx_utilities import *
 from my_setup import *
 from control import *
 
-Program_name = 'Prover9-Mace4'
-Program_version = '0.5'
-Program_date = 'December 2007'
+Program_name = 'Prover9-Mace4-Improved'
+Program_version = '0.6'
+Program_date = 'April 2021'
 
 Banner = '%s Version %s, %s' % (Program_name, Program_version, Program_date)
 
@@ -281,12 +281,19 @@ performance depends on the application.
 
 """
 
-Feedback = ('\nFeedback to mccune@cs.unm.edu.  We are '
+Feedback = ('\nFeedback of this version to thiagogv@gmail.com. '
+            'Older Feedback to mccune@cs.unm.edu.  We are '
             'especially interested in making this system '
             'accessible and friendly to new users.\n')
 
 Things_to_do = """
 To Do:
+ + Code revision
+ + Mac and Windows versions
+ + Testing
+ + Documentation
+
+Older To Do:
 
  + If both Prover9 and Mace4 are running, and one
    succeeds, the user should be reminded that the
@@ -297,7 +304,7 @@ To Do:
  + Remember preferences for future sessions.
  + Help
 
-Problems:
+Older Problems:
 
  + Mac: On a G3 iBook (10.3.9), text boxes with a lot of text
    (>32K?) don't show scrollbars.  (All of the text really is
