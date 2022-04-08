@@ -573,7 +573,7 @@ class Program_panel(wx.Panel):
         self.time_ctrl_opt = opt
 
         label = wx.StaticText(self, label_id, 'Time Limit: ')
-        self.time_ctrl.SetToolTipString('A value of -1 means there is no limit.')
+        self.time_ctrl.SetToolTip('A value of -1 means there is no limit.')
         self.Bind(wx.EVT_SPINCTRL, self.on_time_ctrl, self.time_ctrl)
 
         time_sizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -585,17 +585,17 @@ class Program_panel(wx.Panel):
         # Start, Pause, Kill
 
         self.start_btn = wx.Button(self, -1, 'Start')
-        self.start_btn.SetToolTipString(
+        self.start_btn.SetToolTip(
             'Start %s with the current input.' % program.name)
         self.Bind(wx.EVT_BUTTON, self.on_start, self.start_btn)
         self.pause_btn = wx.Button(self, -1, 'Pause')
-        self.pause_btn.SetToolTipString('Pause or Resume %s.' % program.name)
+        self.pause_btn.SetToolTip('Pause or Resume %s.' % program.name)
         self.pause_btn.Enable(False)
         self.Bind(wx.EVT_BUTTON, self.on_pause_resume, self.pause_btn)
         if Win32():
             self.pause_btn.Show(False)
         self.kill_btn = wx.Button(self, -1, 'Kill')
-        self.kill_btn.SetToolTipString('Kill %s process.' % program.name)
+        self.kill_btn.SetToolTip('Kill %s process.' % program.name)
         self.kill_btn.Enable(False)
         self.Bind(wx.EVT_BUTTON, self.on_kill, self.kill_btn)
 
@@ -622,14 +622,14 @@ class Program_panel(wx.Panel):
         # Info, Show/Save
 
         self.info_btn = wx.Button(self, -1, 'Info')
-        self.info_btn.SetToolTipString(
+        self.info_btn.SetToolTip(
             'Show some statistics on the %s search.' % program.name)
         self.Bind(wx.EVT_BUTTON, self.on_info, self.info_btn)
         self.info_btn.Enable(False)
         
         self.show_save_btn = wx.Button(self, -1, 'Show/Save')
         if not Mac():
-            self.show_save_btn.SetToolTipString(
+            self.show_save_btn.SetToolTip(
                 'The choices refer to the most recent %s search.' % program.name)
             self.Bind(wx.EVT_BUTTON, self.on_show_save, self.show_save_btn)
             self.show_save_btn.Enable(False)
@@ -872,7 +872,7 @@ class Control_panel(wx.Panel):
         # Show Input Button
 
         self.show_input_btn = wx.Button(self, -1, 'Show Current Input')
-        self.show_input_btn.SetToolTipString(
+        self.show_input_btn.SetToolTip(
             'Show the data in the setup panel as a text file.\n'
             'This is what will be given to Prover9 and/or Mace4.\n'
             'This need not be saved before running Prover9 or Mace4.')

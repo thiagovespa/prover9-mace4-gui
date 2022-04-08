@@ -337,13 +337,13 @@ class Main_frame(wx.Frame):
         # File menu
         self.fmenu = wx.Menu()
         submenu = self.sample_menu(sample_dir())
-        self.fmenu.AppendMenu(-1, 'Sample Inputs', submenu)
+        self.fmenu.AppendSubMenu(submenu, 'Sample Inputs')
         self.fmenu.AppendSeparator()
-        id = wx.NewId()
+        id = wx.Window.NewControlId()
         self.fmenu.Append(id, 'Clear Entire Setup Panel')
         self.Bind(wx.EVT_MENU, self.clear_setup, id=id)
         self.fmenu.Append(wx.ID_OPEN, '&Open Input File...\tCtrl+O')
-        id = wx.NewId()
+        id = wx.Window.NewControlId()
         self.fmenu.Append(id, 'Append To Input...')
         self.Bind(wx.EVT_MENU, self.on_append, id=id)
         self.fmenu.AppendSeparator()
@@ -363,12 +363,12 @@ class Main_frame(wx.Frame):
         # Preferences menu
         self.pref_menu = wx.Menu()
 
-        id = wx.NewId()
+        id = wx.Window.NewControlId()
         self.pref_menu.Append(id, 'Font for Text Boxes...')
         self.Bind(wx.EVT_MENU, self.select_font, id=id)
         self.pref_menu.AppendSeparator()
 
-        self.highlight_id = wx.NewId()
+        self.highlight_id = wx.Window.NewControlId()
         self.pref_menu.Append(self.highlight_id,
                               'Automatic Highlighting for Text Boxes', '',
                               wx.ITEM_CHECK)
@@ -376,7 +376,7 @@ class Main_frame(wx.Frame):
             self.pref_menu.Check(self.highlight_id, True)
         self.Bind(wx.EVT_MENU, self.highlight_toggle, id=self.highlight_id)
 
-        self.tooltip_id = wx.NewId()
+        self.tooltip_id = wx.Window.NewControlId()
         self.pref_menu.Append(self.tooltip_id, 'Show Tool Tips', '',
                               wx.ITEM_CHECK)
         self.pref_menu.Check(self.tooltip_id, True)
@@ -386,10 +386,10 @@ class Main_frame(wx.Frame):
 
         # View menu
         self.view_menu = wx.Menu()
-        self.view_id = wx.NewId()
+        self.view_id = wx.Window.NewControlId()
         self.view_menu.Append(self.view_id, 'Hide Setup Panel')
         self.Bind(wx.EVT_MENU, self.setup_toggle, id=self.view_id)
-        self.run_id = wx.NewId()
+        self.run_id = wx.Window.NewControlId()
         self.view_menu.Append(self.run_id,'Hide Run Panel')
         self.Bind(wx.EVT_MENU, self.run_toggle, id=self.run_id)
         menu_bar.Append(self.view_menu, '&View')
@@ -433,14 +433,14 @@ class Main_frame(wx.Frame):
                 path = os.path.join(dir_path, x)
                 if os.path.isdir(path):
                     submenu = self.sample_menu(path)
-                    menu.AppendMenu(-1, x, submenu)
+                    menu.AppendSubMenu(submenu, x)
                     have_dir = True
             if have_file and have_dir:
                 menu.AppendSeparator()
             for x in entries:
                 path = os.path.join(dir_path, x)
                 if os.path.isfile(path) and re.search('\.in$', path):
-                    id = wx.NewId()
+                    id = wx.Window.NewControlId()
                     self.probs[id] = path
                     menu.Append(id, x)
                     self.Bind(wx.EVT_MENU, self.load_sample, id=id)
@@ -628,6 +628,8 @@ class My_app(wx.App):
 
         size = size_that_fits((1000,700))  # reduce if screen too small
         pos = pos_for_center(size)         # position to center frame
+        pos = (int(pos[0]),int(pos[1]))
+        
 
         frame = Main_frame(None, 'Prover9/Mace4', size, pos)
         self.SetTopWindow(frame)

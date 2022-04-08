@@ -228,8 +228,7 @@ class Options_panel(wx.Panel):
                     tip = opt[Tip]
                 elif opt[Type] == Parm:
                     (min, max) = opt[Range]
-                    # TODO
-                    print(f'{min}-{max}')
+# TODO
                     (min, max) = (100,100)
                     x = wx.SpinCtrl(self,id,min=min,max=max,size=(75,-1))
                     self.Bind(wx.EVT_SPINCTRL, self.on_change, x)
@@ -241,11 +240,11 @@ class Options_panel(wx.Panel):
                     x.SetStringSelection(opt[Default])
                     tip = opt[Tip]
                     
-                label.SetToolTipString(tip)
+                label.SetToolTip(tip)
                 if GTK():
                     # Tooltips on labels don't work in GTK.
                     # Large tooltips on widgets obscure choices in Mac.
-                    x.SetToolTipString(tip)
+                    x.SetToolTip(tip)
 
                 g_sizer.Add(label, (row,0), (1,1),
                             wx.ALIGN_RIGHT|wx.ALIGN_CENTER_VERTICAL)
