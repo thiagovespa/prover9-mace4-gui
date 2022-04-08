@@ -620,13 +620,13 @@ class Main_frame(wx.Frame):
 # END class Main_frame(Frame)
 
 #TODO: class Splash_screen(wx.SplashScreen):
-class Splash_screen():
-    def __init__(self, path):
+#    def __init__(self, path):
+#
+#            bmp = wx.Image(path, wx.BITMAP_TYPE_GIF).ConvertToBitmap()
+#            wx.SplashScreen.__init__(
+#                self, bmp, wx.SPLASH_CENTRE_ON_SCREEN | wx.SPLASH_NO_TIMEOUT,
+#                5000, None, -1)
 
-            bmp = wx.Image(path, wx.BITMAP_TYPE_GIF).ConvertToBitmap()
-            wx.SplashScreen.__init__(
-                self, bmp, wx.SPLASH_CENTRE_ON_SCREEN | wx.SPLASH_NO_TIMEOUT,
-                5000, None, -1)
 
 # END class Splash_screen(wx.SplashScreen):
 
@@ -645,11 +645,11 @@ class My_app(wx.App):
             path = os.path.join(image_dir(),'prover9-splash.gif')
             if not os.access(path, os.R_OK):
                 error_dialog('splash image %s not found' % path)
-        else:
-                splash = Splash_screen(path)
-                splash.Show(True)
-                time.sleep(1)
-                splash.Destroy()
+        # else: # TODO Splash not working
+            # splash = Splash_screen(path)
+            # splash.Show(True)
+            # time.sleep(1)
+            # splash.Destroy()
 
         frame.Show(True)
     
